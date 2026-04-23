@@ -2,8 +2,11 @@ import React from 'react'
 import Navbar from './NavBar'
 
 const FolderContainer = ({ children, activeTab, folderColor, cabinetColor, showSocials }) => {
-  return (
-    <section id={activeTab.toLowerCase()} className={`min-h-screen ${cabinetColor} flex flex-col w-full relative`}>
+    return (
+      <section 
+        id={activeTab.toLowerCase()} // This creates id="home", id="about", etc.
+        className={`min-h-screen ${cabinetColor} flex flex-col w-full relative`}
+      >
       
       {/* 1. The Social Icons - Positioned absolutely at the top right of the section */}
       {showSocials && (

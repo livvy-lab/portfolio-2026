@@ -1,6 +1,7 @@
 import React from 'react'
 import Home from './sections/Home'
-import About from './sections/About' // 1. Import the new section
+import About from './sections/About'
+import Skills from './sections/Skills'
 
 function App() {
   return (
@@ -14,6 +15,11 @@ function App() {
       <About 
         cabinetColor="bg-folder-yellow" 
         folderColor="bg-folder-light-blue" 
+      />
+
+      <Skills 
+        cabinetColor="bg-folder-light-blue" 
+        folderColor="bg-folder-blue" 
       />
 
     </main>
