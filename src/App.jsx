@@ -3,6 +3,7 @@ import Home from './sections/Home'
 import About from './sections/About'
 import Skills from './sections/Skills'
 import Projects from './sections/Projects'
+import Contact from './sections/Contact'
 
 function App() {
   return (
@@ -25,6 +26,11 @@ function App() {
 
       <Projects 
         cabinetColor="bg-folder-blue" 
+        folderColor="bg-folder-pink" 
+      />
+
+      <Contact 
+        cabinetColor="bg-folder-light-pink" 
         folderColor="bg-folder-pink" 
       />
     </main>
