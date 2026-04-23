@@ -1,9 +1,41 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Folder Colors */
+  --color-folder-yellow: #E8D196;
+  --color-folder-light-blue: #C7DDFC;
+  --color-folder-blue: #90B7EB;
+  --color-folder-pink: #D074C6;
+  --color-folder-light-pink: #EAB1E3;
+  --color-brutal-blue: #5C7CFA;
+
+  /* Fonts */
+  --font-mont: "Montserrat", sans-serif;
+  --font-hand: "Figma Hand", "Indie Flower", cursive;
+  --font-betania: "Betania Patmos", sans-serif;
+
+  /* Custom Shadows */
+  --shadow-brutal: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-brutal-lg: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+}
+
+@font-face {
+  font-family: 'Figma Hand';
+  src: url('./fonts/FigmaHand.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Betania Patmos';
+  src: url('./fonts/BetaniaPatmos-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-betania {
+  font-family: 'Betania Patmos', sans-serif !important;
+}
 
 body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  @apply m-0 p-0 antialiased;
 }
