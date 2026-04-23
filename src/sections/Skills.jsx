@@ -1,14 +1,38 @@
 import React from 'react'
-import FolderContainer from '../components/FolderContainer'
 import StickyNote from '../components/StickyNote'
+import FolderContainer from '../components/FolderContainer'
+
+// Mixing icon sets for maximum stability with Vite
+import { 
+  DiHtml5, 
+  DiCss3, 
+  DiJavascript1, 
+  DiReact, 
+  DiNodejsSmall, 
+  DiPython 
+} from 'react-icons/di'
+
+import { 
+  SiCplusplus, 
+  SiFigma, 
+  SiPostgresql 
+} from 'react-icons/si'
+
+import { IoStatsChart } from 'react-icons/io5'
 
 const Skills = ({ cabinetColor, folderColor }) => {
-  const colors = ['bg-[#AFDFE3]', 'bg-[#B6E3AF]', 'bg-[#E8E196]', 'bg-[#E3AFE3]'];
-  
-  const skillList = [
-    "C++", "Python", "HTML", "CSS", "Node.js",
-    "React.js", "JavaScript", "SQL", "Figma", "Power BI"
-  ];
+  const skills = [
+    { title: "C++", icon: <SiCplusplus />, color: "bg-[#AFDFE3]" },
+    { title: "Python", icon: <DiPython />, color: "bg-[#B6E3AF]" },
+    { title: "HTML", icon: <DiHtml5 />, color: "bg-[#E8E196]" },
+    { title: "CSS", icon: <DiCss3 />, color: "bg-[#E3AFE3]" },
+    { title: "Node.js", icon: <DiNodejsSmall />, color: "bg-[#AFDFE3]" },
+    { title: "React.js", icon: <DiReact />, color: "bg-[#B6E3AF]" },
+    { title: "JavaScript", icon: <DiJavascript1 />, color: "bg-[#E8E196]" },
+    { title: "SQL", icon: <SiPostgresql />, color: "bg-[#E3AFE3]" },
+    { title: "Figma", icon: <SiFigma />, color: "bg-[#AFDFE3]" },
+    { title: "Power BI", icon: <IoStatsChart />, color: "bg-[#B6E3AF]" }
+  ]
 
   return (
     <FolderContainer 
@@ -16,17 +40,18 @@ const Skills = ({ cabinetColor, folderColor }) => {
       cabinetColor={cabinetColor} 
       folderColor={folderColor}
     >
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 py-20 px-10">
-        {skillList.map((skill, index) => (
-          <StickyNote 
-            key={skill}
-            title={skill}
-            /* Cycles through your 4 colors */
-            color={colors[index % colors.length]}
-            /* Gives each note a unique "messy" tilt */
-            rotation={index % 2 === 0 ? -2 : 2}
-          />
-        ))}
+      <div className="w-full flex flex-col items-center py-20 px-6">
+        {/* Responsive Grid: 2 columns on mobile, 5 on desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12 max-w-7xl">
+          {skills.map((skill, index) => (
+            <StickyNote 
+              key={index}
+              title={skill.title}
+              icon={skill.icon}
+              color={skill.color}
+            />
+          ))}
+        </div>
       </div>
     </FolderContainer>
   )
