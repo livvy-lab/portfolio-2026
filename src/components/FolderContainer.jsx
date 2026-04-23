@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './NavBar'
-import githubIcon from '../assets/GitHub-icon.svg'
+import githubIcon from '../assets/GitHub-Icon.svg'
 import linkedinIcon from '../assets/LinkedIn-Icon.svg'
 
 const FolderContainer = ({ children, activeTab, folderColor, cabinetColor, showSocials }) => {
