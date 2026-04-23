@@ -2,6 +2,7 @@ import React from 'react'
 import Home from './sections/Home'
 import About from './sections/About'
 import Skills from './sections/Skills'
+import Projects from './sections/Projects'
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
         folderColor="bg-folder-blue" 
       />
 
+      <Projects 
+        cabinetColor="bg-folder-blue" 
+        folderColor="bg-folder-pink" 
+      />
     </main>
   )
 }
