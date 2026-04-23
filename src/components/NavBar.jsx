@@ -1,13 +1,14 @@
 import React from 'react'
 import Tab from './Tab'
+import { Home, Star, FolderCode, Users, CodeXml } from 'lucide-react'
 
 const Navbar = ({ activeTab }) => {
   const tabs = [
-    { name: 'Home', color: 'bg-folder-yellow', icon: '🏠' },
-    { name: 'About', color: 'bg-folder-light-blue', icon: '⭐' },
-    { name: 'Skills', color: 'bg-folder-blue', icon: '</>' },
-    { name: 'Projects', color: 'bg-folder-light-pink', icon: '📂' },
-    { name: 'Contact', color: 'bg-folder-pink', icon: '👥' },
+    { name: 'Home', color: 'bg-folder-yellow', icon: <Home size={24} />},
+    { name: 'About', color: 'bg-folder-light-blue', icon: <Star size={24} /> },
+    { name: 'Skills', color: 'bg-folder-blue', icon: <CodeXml size={24} /> },
+    { name: 'Projects', color: 'bg-folder-light-pink', icon: <FolderCode size={24} /> },
+    { name: 'Contact', color: 'bg-folder-pink', icon: <Users size={24} /> },
   ]
 
   return (
