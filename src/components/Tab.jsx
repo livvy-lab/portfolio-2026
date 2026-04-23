@@ -1,27 +1,28 @@
 import React from 'react'
 
-const Tab = ({ name, color, icon, isActive, isFirst, isLast }) => {
+const Tab = ({ name, color, icon, isActive, isFirst, index }) => {
   return (
     <button 
       className={`
-        ${color}
-        px-10 py-3
-        border-t-[6px] border-black
-        /* Each tab has a 3px side border to create 6px total when touching */
-        border-x-[3px] 
-        rounded-t-[15px]
-        font-mont font-black text-xl flex items-center gap-3 transition-all
+        ${color} 
+        px-14 py-4
+        border-t-[6px] border-black border-r-[6px]
+        rounded-t-[15px] rounded-b-none 
+        font-mont font-black text-xl flex items-center gap-3 transition-all duration-200
         
-        /* Layering Logic */
+        /* Overlap fix */
+        ${!isFirst ? '-ml-[6px]' : 'border-l-[6px]'}
+
+        /* The Align Fix: 
+           Active tab is taller (72px) and has NO bottom border.
+           Inactive tabs are shorter (66px) and keep their bottom border.
+        */
         ${isActive 
-          ? 'z-30 h-[66px] border-b-0 -mb-[6px] relative translate-y-[6px]' 
-          : 'z-10 h-[56px] border-b-[6px] hover:brightness-95'
+          ? 'z-50 h-[72px] border-b-0 relative border-l-[6px]' 
+          : 'z-10 h-[66px] border-b-[6px] relative'
         }
-        
-        /* Edge Logic */
-        ${isFirst ? 'border-l-[6px]' : ''}
-        ${isLast ? 'border-r-[6px]' : ''}
       `}
+      style={{ zIndex: isActive ? 50 : 40 - index }}
     >
       <span className="text-xl grayscale">{icon}</span>
       {name}
