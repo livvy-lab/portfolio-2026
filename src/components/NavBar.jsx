@@ -6,8 +6,8 @@ const Navbar = ({ activeTab }) => {
     { name: 'Home', color: 'bg-folder-yellow', icon: '🏠' },
     { name: 'About', color: 'bg-folder-light-blue', icon: '⭐' },
     { name: 'Skills', color: 'bg-folder-blue', icon: '</>' },
-    { name: 'Projects', color: 'bg-folder-pink', icon: '📂' },
-    { name: 'Contact', color: 'bg-folder-light-pink', icon: '👥' },
+    { name: 'Projects', color: 'bg-folder-light-pink', icon: '📂' },
+    { name: 'Contact', color: 'bg-folder-pink', icon: '👥' },
   ]
 
   return (
