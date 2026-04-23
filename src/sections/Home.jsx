@@ -8,6 +8,7 @@ const Home = ({ cabinetColor, folderColor }) => {
         activeTab="Home" 
         cabinetColor={cabinetColor} 
         folderColor={folderColor}
+        showSocials={true}
       >
         <NameCard />
       </FolderContainer>
