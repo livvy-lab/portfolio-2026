@@ -9,8 +9,7 @@ const StickyNote = ({ title, icon, color }) => {
         border-[4px] border-black 
         shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] 
         flex flex-col items-center justify-center p-6 gap-3
-        transition-transform hover:scale-105 hover:z-20 cursor-default
-      `}
+\      `}
     >
       {/* Icon Container - Scaled for visibility */}
       {icon && (
