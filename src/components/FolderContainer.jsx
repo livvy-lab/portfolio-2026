@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './NavBar'
-import githubIcon from '../assets/GitHub-icon.svg'
+import githubIcon from '../assets/GitHub-Icon.svg'
 import linkedinIcon from '../assets/LinkedIn-Icon.svg'
 
 /* Added currentActive to the props so the Navbar highlights the right tab 
