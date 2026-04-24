@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Tab from './Tab'
-import githubIcon from '../assets/GitHub-icon.svg'
+import githubIcon from '../assets/GitHub-Icon.svg'
 import linkedinIcon from '../assets/LinkedIn-Icon.svg'
 import { Home, Star, FolderCode, Users, CodeXml, Menu, X } from 'lucide-react'
 
