@@ -16,9 +16,6 @@ const Navbar = ({ activeTab, onTabChange }) => {
   ]
 
   return (
-    /* FIX: pointer-events-none ensures the transparent part of the nav doesn't 
-       block clicks to elements underneath it. 
-    */
     <nav className="w-full border-b-[6px] border-black px-0 pt-4 z-[100] bg-inherit pointer-events-none">
       <div className="flex items-end justify-between h-full px-6 pointer-events-auto">
         
@@ -43,10 +40,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
               e.stopPropagation();
               setIsOpen(true);
             }}
-            /* FIX: Higher z-index (200) and explicit pointer-events-auto 
-               ensures this button is ALWAYS clickable.
-            */
-            className={`fixed top-4 right-6 z-[200] p-2 border-[3px] border-black bg-white rounded-lg shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px] transition-all pointer-events-auto
+            className={`fixed top-4 right-6 z-[9999] p-2 border-[3px] border-black bg-white rounded-lg shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px] transition-all pointer-events-auto
               ${isOpen ? 'opacity-0 invisible' : 'opacity-100 visible'}
             `}
           >
@@ -56,19 +50,18 @@ const Navbar = ({ activeTab, onTabChange }) => {
       </div>
 
       {/* Mobile Slide-out Overlay */}
-      <div className={`fixed inset-0 z-[300] ${isOpen ? 'visible pointer-events-auto' : 'invisible pointer-events-none'} md:hidden`}>
-        {/* Backdrop */}
+      <div className={`fixed inset-0 top-0 left-0 w-full h-full z-[10000] ${isOpen ? 'visible pointer-events-auto' : 'invisible pointer-events-none'} md:hidden`}>
+        {/* Backdrop - Blur removed, opacity kept for depth */}
         <div 
           className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`} 
           onClick={() => setIsOpen(false)} 
         />
         
-        {/* Menu Panel */}
-        <div className={`absolute right-0 top-0 h-full w-[80%] max-w-[300px] bg-white border-l-[6px] border-black p-5 flex flex-col shadow-[-10px_0px_0px_0px_rgba(0,0,0,0.1)] transform transition-transform duration-300 overflow-x-hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        {/* Menu Panel - Brutalist shadow maintained */}
+        <div className={`absolute right-0 top-0 h-full w-[80%] max-w-[300px] bg-white border-l-[6px] border-black p-5 flex flex-col shadow-[-10px_0px_0px_0px_rgba(0,0,0,0.1)] transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           
-          {/* Internal Content Wrapper */}
           {isOpen && (
-            <div className="flex flex-col h-full animate-in fade-in duration-200">
+            <div className="flex flex-col h-full animate-in fade-in duration-300">
               {/* Header */}
               <div className="flex justify-between items-center mb-6 pt-1 flex-shrink-0">
                 <h2 className="font-mont font-black uppercase text-xl tracking-tighter text-black">Menu</h2>
