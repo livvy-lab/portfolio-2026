@@ -3,8 +3,6 @@ import Navbar from './NavBar'
 import githubIcon from '../assets/GitHub-Icon.svg'
 import linkedinIcon from '../assets/LinkedIn-Icon.svg'
 
-/* Added currentActive to the props so the Navbar highlights the right tab 
-   while you scroll past different sections */
 const FolderContainer = ({ 
   children, 
   activeTab, 
@@ -17,12 +15,15 @@ const FolderContainer = ({
     return (
       <section 
         id={activeTab.toLowerCase()} 
-        /* min-h-[100dvh] ensures the folder takes up the full mobile screen */
-        className={`min-h-[100dvh] ${cabinetColor} flex flex-col w-full relative overflow-x-hidden`}
+        /* Changed min-h to 110vh to give more scroll "travel" time.
+          This prevents the tabs from flickering too fast when you scroll quickly.
+        */
+        className={`min-h-[110dvh] md:min-h-[120vh] ${cabinetColor} flex flex-col w-full relative overflow-x-hidden transition-colors duration-500`}
       >
       
       {showSocials && (
         <div className="hidden md:flex absolute top-6 right-10 gap-4 z-[999] pointer-events-auto">
+          {/* ... LinkedIn/GitHub links ... */}
           <a 
             href="https://www.linkedin.com/in/olivia-n-wright/" 
             target="_blank" 
@@ -43,11 +44,13 @@ const FolderContainer = ({
         </div>
       )}
 
-      {/* We pass currentActive here so the Navbar highlights the tab 
-          you're actually on, even if this specific folder is 'About' */}
       <Navbar activeTab={currentActive} onTabChange={onTabChange} />
       
-      <div className={`flex-1 flex flex-col items-center justify-center w-full px-4 py-8 md:py-0 relative z-0 ${folderColor}`}>
+      {/* Increased py-16 on mobile and py-24 on desktop. 
+        This extra vertical space acts as a "buffer" so the active tab 
+        stays highlighted longer as the content passes the center of the screen.
+      */}
+      <div className={`flex-1 flex flex-col items-center justify-center w-full px-4 py-16 md:py-24 relative z-0 ${folderColor}`}>
         <div className="w-full flex items-center justify-center">
           {children}
         </div>
