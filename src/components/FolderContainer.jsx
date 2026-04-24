@@ -15,12 +15,12 @@ const FolderContainer = ({
     return (
       <section 
         id={activeTab.toLowerCase()} 
-        /* Back to standard 100vh to reduce total page length */
-        className={`min-h-[100dvh] md:min-h-[100vh] ${cabinetColor} flex flex-col w-full relative overflow-x-hidden transition-colors duration-500`}
+        /* Added z-10 to the section to keep it in a baseline stack */
+        className={`min-h-[100dvh] md:min-h-[100vh] ${cabinetColor} flex flex-col w-full relative z-10 overflow-x-hidden transition-colors duration-500`}
       >
       
       {showSocials && (
-        <div className="hidden md:flex absolute top-6 right-10 gap-4 z-[999] pointer-events-auto">
+        <div className="hidden md:flex absolute top-6 right-10 gap-4 z-[100] pointer-events-auto">
           <a 
             href="https://www.linkedin.com/in/olivia-n-wright/" 
             target="_blank" 
@@ -41,12 +41,14 @@ const FolderContainer = ({
         </div>
       )}
 
-      <Navbar activeTab={currentActive} onTabChange={onTabChange} />
-      
-      {/* 1. justify-center: Keeps everything centered on mobile.
-          2. md:justify-start: Shifts content to the top on desktop.
-          3. md:pt-16: Provides the top buffer only for the desktop view.
+      {/* STACKING FIX: 
+          Wrapped Navbar in a sticky container with a high z-index. 
+          This ensures the tabs stay visible even if sections overlap during scrolling. 
       */}
+      <div className="sticky top-0 z-[100] w-full">
+        <Navbar activeTab={currentActive} onTabChange={onTabChange} />
+      </div>
+      
       <div className={`flex-1 flex flex-col items-center justify-center md:justify-start w-full px-4 md:pt-16 pb-8 md:pb-20 relative z-0 ${folderColor}`}>
         <div className="w-full flex items-center justify-center md:mt-12">
           {children}
