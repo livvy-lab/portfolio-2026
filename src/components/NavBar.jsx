@@ -61,26 +61,29 @@ const Navbar = ({ activeTab, onTabChange }) => {
             </button>
           </div>
 
-          {/* Tab Buttons Container */}
-          <div className="flex flex-col gap-3 flex-shrink-0 pr-2"> {/* Added slight padding-right so tabs don't hit the edge */}
-            {tabs.map((tab) => (
-              <button
-                key={tab.name}
-                onClick={() => {
-                  onTabChange(tab.name);
-                  setIsOpen(false);
-                }}
-                className={`flex items-center gap-3 p-3 border-[3px] border-black rounded-lg font-mont font-bold text-base text-black transition-all ${tab.color}
-                  ${activeTab === tab.name 
-                    ? 'translate-x-[-8px] shadow-[8px_4px_0px_0px_rgba(0,0,0,1)] z-10' 
-                    : 'translate-x-0 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-0'}
-                `}
-              >
-                {tab.icon}
-                {tab.name}
-              </button>
-            ))}
-          </div>
+        {/* Tab Buttons Container */}
+        <div className="flex flex-col gap-4 flex-shrink-0 pr-2"> 
+          {tabs.map((tab) => (
+            <button
+              key={tab.name}
+              onClick={() => {
+                onTabChange(tab.name);
+                setIsOpen(false);
+              }}
+              className={`flex items-center gap-3 p-3 border-[3px] border-black rounded-lg font-mont font-bold text-base text-black transition-all ${tab.color}
+                /* Static shadow and position so it doesn't jump when clicked */
+                translate-x-0 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+                
+                /* Optional: Add a slight brightness or border change to show it is active 
+                  without changing the layout size/position */
+                ${activeTab === tab.name ? 'ring-2 ring-black ring-inset' : ''}
+              `}
+            >
+              {tab.icon}
+              {tab.name}
+            </button>
+          ))}
+        </div>
 
           {/* Social Icons - Fixed at the bottom */}
           <div className="mt-8 flex gap-3 flex-shrink-0 mb-4">
