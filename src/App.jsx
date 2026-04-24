@@ -13,7 +13,7 @@ function App() {
   const handleTabChange = (tabName) => {
     const element = document.getElementById(tabName.toLowerCase());
     if (element) {
-      // We use behavior: 'auto' (or just remove the options) to snap instantly
+      // Instant snap ensures the scroll position matches the state immediately
       element.scrollIntoView({ behavior: 'auto' });
       setActiveTab(tabName);
     }
@@ -49,10 +49,16 @@ function App() {
   }, []);
 
   return (
-    <main className="w-full bg-white">
+    <main className="w-full bg-white relative">
       
+      {/* The 'index' prop is crucial here. 
+        It allows FolderContainer to set dynamic z-indexes so 
+        the mobile menu button for the CURRENT section is always on top.
+      */}
+
       <FolderContainer 
         activeTab="Home" 
+        index={0}
         currentActive={activeTab} 
         onTabChange={handleTabChange}
         cabinetColor="bg-white" 
@@ -64,6 +70,7 @@ function App() {
 
       <FolderContainer 
         activeTab="About" 
+        index={1}
         currentActive={activeTab}
         onTabChange={handleTabChange}
         cabinetColor="bg-folder-yellow" 
@@ -74,6 +81,7 @@ function App() {
 
       <FolderContainer 
         activeTab="Skills" 
+        index={2}
         currentActive={activeTab}
         onTabChange={handleTabChange}
         cabinetColor="bg-folder-light-blue" 
@@ -84,6 +92,7 @@ function App() {
 
       <FolderContainer 
         activeTab="Projects" 
+        index={3}
         currentActive={activeTab}
         onTabChange={handleTabChange}
         cabinetColor="bg-folder-blue" 
@@ -94,6 +103,7 @@ function App() {
 
       <FolderContainer 
         activeTab="Contact" 
+        index={4}
         currentActive={activeTab}
         onTabChange={handleTabChange}
         cabinetColor="bg-folder-light-pink" 

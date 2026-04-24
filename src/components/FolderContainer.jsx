@@ -10,13 +10,19 @@ const FolderContainer = ({
   onTabChange, 
   folderColor, 
   cabinetColor, 
-  showSocials 
+  showSocials,
+  index // Added index prop
 }) => {
     return (
       <section 
         id={activeTab.toLowerCase()} 
-        /* Added z-10 to the section to keep it in a baseline stack */
-        className={`min-h-[100dvh] md:min-h-[100vh] ${cabinetColor} flex flex-col w-full relative z-10 overflow-x-hidden transition-colors duration-500`}
+        /* STACKING FIX: We use the index to increase the z-index for each section.
+           Section 0 (Home) = z-index 10
+           Section 1 (About) = z-index 20
+           This ensures the next folder physically slides OVER the previous one.
+        */
+        style={{ zIndex: (index + 1) * 10 }}
+        className={`min-h-[100dvh] md:min-h-[100vh] ${cabinetColor} flex flex-col w-full relative overflow-x-hidden transition-colors duration-500`}
       >
       
       {showSocials && (
@@ -41,9 +47,8 @@ const FolderContainer = ({
         </div>
       )}
 
-      {/* STACKING FIX: 
-          Wrapped Navbar in a sticky container with a high z-index. 
-          This ensures the tabs stay visible even if sections overlap during scrolling. 
+      {/* Sticky ensures the tabs for THIS folder stay at the top 
+          until the NEXT folder's tabs slide up and cover them.
       */}
       <div className="sticky top-0 z-[100] w-full">
         <Navbar activeTab={currentActive} onTabChange={onTabChange} />
