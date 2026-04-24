@@ -1,26 +1,10 @@
 import React from 'react'
 import StickyNote from '../components/StickyNote'
-import FolderContainer from '../components/FolderContainer'
-
-// Mixing icon sets for maximum stability with Vite
-import { 
-  DiHtml5, 
-  DiCss3, 
-  DiJavascript1, 
-  DiReact, 
-  DiNodejsSmall, 
-  DiPython 
-} from 'react-icons/di'
-
-import { 
-  SiCplusplus, 
-  SiFigma, 
-  SiPostgresql 
-} from 'react-icons/si'
-
+import { DiHtml5, DiCss3, DiJavascript1, DiReact, DiNodejsSmall, DiPython } from 'react-icons/di'
+import { SiCplusplus, SiFigma, SiPostgresql } from 'react-icons/si'
 import { IoStatsChart } from 'react-icons/io5'
 
-const Skills = ({ cabinetColor, folderColor }) => {
+const Skills = () => {
   const skills = [
     { title: "C++", icon: <SiCplusplus />, color: "bg-[#AFDFE3]" },
     { title: "Python", icon: <DiPython />, color: "bg-[#B6E3AF]" },
@@ -35,25 +19,18 @@ const Skills = ({ cabinetColor, folderColor }) => {
   ]
 
   return (
-    <FolderContainer 
-      activeTab="Skills" 
-      cabinetColor={cabinetColor} 
-      folderColor={folderColor}
-    >
-      <div className="w-full flex flex-col items-center py-20 px-6">
-        {/* Responsive Grid: 2 columns on mobile, 5 on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12 max-w-7xl">
-          {skills.map((skill, index) => (
-            <StickyNote 
-              key={index}
-              title={skill.title}
-              icon={skill.icon}
-              color={skill.color}
-            />
-          ))}
-        </div>
+    <div className="w-full flex flex-col items-center py-20 px-6 animate-fadeIn">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12 max-w-7xl">
+        {skills.map((skill, index) => (
+          <StickyNote 
+            key={index}
+            title={skill.title}
+            icon={skill.icon}
+            color={skill.color}
+          />
+        ))}
       </div>
-    </FolderContainer>
+    </div>
   )
 }
 

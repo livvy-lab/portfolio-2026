@@ -1,12 +1,9 @@
 import React from 'react'
-import FolderContainer from '../components/FolderContainer'
 import ProjectCard from '../components/ProjectCard'
-
-// Importing your assets
 import ScrappedImg from '../assets/Scrapped.png'
 import CoogMusicImg from '../assets/Coogs-Music.png'
 
-const Projects = ({ cabinetColor }) => {
+const Projects = () => {
   const projects = [
     {
       title: "Scrapped",
@@ -25,17 +22,11 @@ const Projects = ({ cabinetColor }) => {
   ]
 
   return (
-    <FolderContainer 
-      activeTab="Projects" 
-      cabinetColor={cabinetColor} 
-      folderColor="bg-[#E1B3E1]" 
-    >
-      <div className="flex flex-col items-center gap-12 py-20 px-6 max-w-6xl w-full mx-auto">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
-        ))}
-      </div>
-    </FolderContainer>
+    <div className="flex flex-col items-center gap-12 py-20 px-6 max-w-6xl w-full mx-auto animate-fadeIn">
+      {projects.map((project) => (
+        <ProjectCard key={project.title} {...project} />
+      ))}
+    </div>
   )
 }
 

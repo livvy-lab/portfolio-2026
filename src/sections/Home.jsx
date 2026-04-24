@@ -1,17 +1,11 @@
 import React from 'react'
-import FolderContainer from '../components/FolderContainer'
 import NameCard from '../components/NameCard'
 
-const Home = ({ cabinetColor, folderColor }) => {
+const Home = () => {
     return (
-      <FolderContainer 
-        activeTab="Home" 
-        cabinetColor={cabinetColor} 
-        folderColor={folderColor}
-        showSocials={true}
-      >
+      <div className="w-full flex items-center justify-center animate-fadeIn">
         <NameCard />
-      </FolderContainer>
+      </div>
     )
   }
 
